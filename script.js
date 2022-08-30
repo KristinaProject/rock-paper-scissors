@@ -8,7 +8,7 @@ function getComputerChoice(min, max) {
   return value[random];
 }
 
-function round(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
 
   if(playerSelection == computerSelection){
