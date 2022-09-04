@@ -1,5 +1,7 @@
-let value = ['rock', 'paper', 'scissors'];
-let computerChoice = getComputerChoice(0, value.length);
+let value = ["rock", "paper", "scissors"];
+let playerResult = 0;
+let compResult = 0;
+let playerChoice = '';
 
 function getComputerChoice(min, max) {
   min = Math.ceil(min);
@@ -9,13 +11,46 @@ function getComputerChoice(min, max) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
+  const message = document.querySelector("[data-winner]");
 
-  if(playerSelection == computerSelection){
-    return 'Draw!';
-  } else if(playerSelection == value[1] && computerSelection == value[3] || playerSelection == value[2] && computerSelection == value[1] || playerSelection == value[3] && computerSelection == value[2]) {
-    return 'You are winner!';
+  if (playerSelection == computerSelection) {
+    return (message.innerHTML = "Tie!");
+  } else if (playerSelection === value[1] && computerSelection == value[3]) {
+    playerResult++;
+    return (message.innerHTML = "You are winner!");
+  } else if (playerSelection == value[2] && computerSelection == value[1]) {
+    playerResult++;
+    return (message.innerHTML = "You are winner!");
+  } else if (playerSelection == value[3] && computerSelection == value[2]) {
+    playerResult++;
+    return (message.innerHTML = "You are winner!");
   } else {
-    return `You are looser! ${computerSelection} beats ${playerSelection}!`;
+    compResult++;
+    return (message.innerHTML = `You are looser! Computer choice ${computerSelection} beats yours ${playerSelection}!`);
   }
+}
+
+const rock = document.querySelector("[data-rock]");
+const paper = document.querySelector("[data-paper]");
+const scissors = document.querySelector("[data-scissors]");
+
+rock.addEventListener('click', () => {
+  playerChoice = value[0];
+  oneRound();
+})
+
+paper.addEventListener('click', () => {
+  playerChoice = value[1];
+  oneRound();
+})
+
+scissors.addEventListener('click', () => {
+  playerChoice = value[2];
+  oneRound();
+})
+
+function oneRound() {
+  const comp = getComputerChoice(0, value.length);
+  playRound(playerChoice, comp);
+  console.log(playerResult, compResult);
 }
