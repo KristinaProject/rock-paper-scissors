@@ -5,80 +5,76 @@ const message = document.querySelector("[data-game]");
 const reset = document.querySelector("[data-reset]");
 const plresult = document.querySelector("[data-plresult]");
 const pcresult = document.querySelector("[data-pcresult]");
-const spanWrap = document.querySelector('.span-wrap');
+const spanWrap = document.querySelector(".span-wrap");
 
 let value = ["rock", "paper", "scissors"];
 let playerResult = 0;
 let compResult = 0;
 let playerChoice = "";
 message.innerHTML = "";
+plresult.innerHTML = playerResult;
+pcresult.innerHTML = compResult;
 
-reset.addEventListener("click", resetGame());
+reset.addEventListener("click", () => resetGame());
 
 function resetGame() {
-  
+  message.innerHTML = "";
+  playerResult = 0;
+  compResult = 0;
+  getNewResult();
 }
 
 function getComputerChoice() {
-  let random = Math.floor(Math.random() * 3);
+  let random = Math.floor(Math.random() * value.length);
   return value[random];
 }
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
-    return (
-      (message.innerHTML = "Tie!"),
-      (plresult.innerHTML = playerResult),
-      (pcresult.innerHTML = compResult)
-    );
+    getNewResult();
+    return (message.innerHTML = "Tie!");
   } else if (playerSelection === value[1] && computerSelection == value[3]) {
     playerResult++;
-    return (
-      (message.innerHTML = `You are winner! Your choice ${playerSelection} beats computers ${computerSelection}`),
-      (plresult.innerHTML = playerResult),
-      (pcresult.innerHTML = compResult)
-    );
+    getNewResult();
+    return (message.innerHTML = `You are winner! Your choice ${playerSelection} beats computers ${computerSelection}`);
   } else if (playerSelection == value[2] && computerSelection == value[1]) {
     playerResult++;
-    return (
-      (message.innerHTML = `You are winner! Your choice ${playerSelection} beats computers ${computerSelection}`),
-      (plresult.innerHTML = playerResult),
-      (pcresult.innerHTML = compResult)
-    );
+    getNewResult();
+    return (message.innerHTML = `You are winner! Your choice ${playerSelection} beats computers ${computerSelection}`);
   } else if (playerSelection == value[3] && computerSelection == value[2]) {
     playerResult++;
-    return (
-      (message.innerHTML = `You are winner! Your choice ${playerSelection} beats computers ${computerSelection}`),
-      (plresult.innerHTML = playerResult),
-      (pcresult.innerHTML = compResult)
-    );
+    getNewResult();
+    return (message.innerHTML = `You are winner! Your choice ${playerSelection} beats computers ${computerSelection}`);
   } else {
     compResult++;
-    return (
-      (message.innerHTML = `You are looser! Computer choice ${computerSelection} beats yours ${playerSelection}!`),
-      (plresult.innerHTML = playerResult),
-      (pcresult.innerHTML = compResult)
-    );
+    getNewResult();
+    return (message.innerHTML = `You are looser! Computer choice ${computerSelection} beats yours ${playerSelection}!`);
   }
+}
+
+function getNewResult() {
+  plresult.innerHTML = playerResult;
+  pcresult.innerHTML = compResult;
 }
 
 function main() {
   rock.addEventListener("click", () => {
-    oneRound('rock');
+    oneRound("rock");
   });
 
   paper.addEventListener("click", () => {
-    oneRound('paper');
+    oneRound("paper");
   });
 
   scissors.addEventListener("click", () => {
-    playerChoice = value[2];
-    oneRound('scissors');
+    oneRound("scissors");
   });
 }
 
 function oneRound(user) {
-  spanWrap.classList.remove('none')
-  const comp = getComputerChoice(0, value.length);
+  spanWrap.classList.remove("none");
+  const comp = getComputerChoice();
   playRound(user, comp);
 }
+
+main();
