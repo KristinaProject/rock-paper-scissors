@@ -62,7 +62,7 @@ function oneRound(user) {
   if (playerResult === 5 || compResult === 5) {
     setTimeout(() => {
       getWinner();
-    }, 2000) 
+    }, 1000) 
   }
 }
 
