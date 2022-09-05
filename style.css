@@ -19,6 +19,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   background-color: rgb(7, 7, 77);
+  position: relative;
 }
 
 .btn-wrap button {
@@ -78,4 +79,23 @@ h1 {
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
+}
+
+[data-winner] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(42, 135, 138);
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  border-radius: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.none {
+  display: none;
 }

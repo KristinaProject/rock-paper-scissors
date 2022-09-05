@@ -6,6 +6,7 @@ const reset = document.querySelector("[data-reset]");
 const plresult = document.querySelector("[data-plresult]");
 const pcresult = document.querySelector("[data-pcresult]");
 const spanWrap = document.querySelector(".span-wrap");
+const winner = document.querySelector("[data-winner]");
 
 let value = ["rock", "paper", "scissors"];
 let playerResult = 0;
@@ -16,18 +17,6 @@ plresult.innerHTML = playerResult;
 pcresult.innerHTML = compResult;
 
 reset.addEventListener("click", () => resetGame());
-
-function resetGame() {
-  message.innerHTML = "";
-  playerResult = 0;
-  compResult = 0;
-  getNewResult();
-}
-
-function getComputerChoice() {
-  let random = Math.floor(Math.random() * value.length);
-  return value[random];
-}
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
@@ -52,11 +41,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function getNewResult() {
-  plresult.innerHTML = playerResult;
-  pcresult.innerHTML = compResult;
-}
-
 function main() {
   rock.addEventListener("click", () => {
     oneRound("rock");
@@ -75,6 +59,37 @@ function oneRound(user) {
   spanWrap.classList.remove("none");
   const comp = getComputerChoice();
   playRound(user, comp);
+  if(playerResult === 5 || compResult === 5){
+    getWinner();
+  }
+}
+
+function getNewResult() {
+  plresult.innerHTML = playerResult;
+  pcresult.innerHTML = compResult;
+}
+
+function getComputerChoice() {
+  let random = Math.floor(Math.random() * value.length);
+  return value[random];
+}
+
+function resetGame() {
+  message.innerHTML = "";
+  winner.classList.add('none');
+  playerResult = 0;
+  compResult = 0;
+  getNewResult();
+}
+
+function getWinner() {
+  winner.classList.remove("none");
+  message.innerHTML = '';
+  if (playerResult > compResult) {
+    return (winner.innerHTML = "You beat Computer! <br> Play again? Press reset button");
+  } else {
+    return (winner.innerHTML = "Computer beat you! <br> Play again? Press reset button");
+  }
 }
 
 main();
