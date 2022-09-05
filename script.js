@@ -59,8 +59,10 @@ function oneRound(user) {
   spanWrap.classList.remove("none");
   const comp = getComputerChoice();
   playRound(user, comp);
-  if(playerResult === 5 || compResult === 5){
-    getWinner();
+  if (playerResult === 5 || compResult === 5) {
+    setTimeout(() => {
+      getWinner();
+    }, 2000) 
   }
 }
 
@@ -76,7 +78,7 @@ function getComputerChoice() {
 
 function resetGame() {
   message.innerHTML = "";
-  winner.classList.add('none');
+  winner.classList.add("none");
   playerResult = 0;
   compResult = 0;
   getNewResult();
@@ -84,11 +86,13 @@ function resetGame() {
 
 function getWinner() {
   winner.classList.remove("none");
-  message.innerHTML = '';
+  message.innerHTML = "";
   if (playerResult > compResult) {
-    return (winner.innerHTML = "You beat Computer! <br> Play again? Press reset button");
+    return (winner.innerHTML =
+      "You beat Computer! <br> Play again? Press reset button");
   } else {
-    return (winner.innerHTML = "Computer beat you! <br> Play again? Press reset button");
+    return (winner.innerHTML =
+      "Computer beat you! <br> Play again? Press reset button");
   }
 }
 
