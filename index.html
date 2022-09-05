@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
-  <title>Rock paper scissors</title>
-</head>
-<body>
-  <h1>Rock paper scissors</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Rock paper scissors</title>
+  </head>
+  <body>
+    <h1>Rock paper scissors</h1>
 
-  <div class="btn-wrap">
-    <button data-rock value="rock">Rock</button>
-    <button data-paper>Paper</button>
-    <button data-scissors>Scissors</button>
-  </div>
+    <div class="wrapper">
+      <div class="btn-wrap">
+        <button data-rock>
+          <img src="./images/rock-paper-scissors-icon-24.jpg" alt="" />
+        </button>
+        <button data-paper>
+          <img src="./images/rock-paper-scissors-icon-23.jpg" alt="" />
+        </button>
+        <button data-scissors>
+          <img src="./images/rock-paper-scissors-icon-22.jpg" alt="" />
+        </button>
+      </div>
 
-  <div data-game></div>
-  <div data-plresult></div>
-  <div data-pcresult></div>
-  <div data-winner></div>
+      <div class="text-wrap">
+        <div data-game></div>
+        <div class="span-wrap none" >
+          <span data-plresult></span>
+          <span data-pcresult></span>
+        </div>
+      </div>
 
-  <button data-reset>Reset</button>
+      <div data-winner></div>
 
-  <script src="./script.js"></script>
-</body>
+      <button data-reset>Reset</button>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
 </html>
